@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: '*.jar')
+}
+
+sourceSets {
+    main.java.srcDir "src/main/java"
+    main.resources.srcDir "src/main/resources"
+}
+
+processResources {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+jar {
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes(
+                'Main-Class': project.group+'.'+project.name+'.Main',
+                'Premain-Class': project.group+'.'+project.name+'.agent.NegRendererAgent',
+                'Can-Redefine-Classes': 'true',
+                'Can-Retransform-Classes': 'true'
+        )
+    }
+    archiveBaseName = project.name
+    archiveVersion = project.version
+}
