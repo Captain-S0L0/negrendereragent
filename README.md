@@ -6,7 +6,7 @@ A Java agent to allow negative item stacks to render their count from indev 2010
 
 1) Download the latest jar from the [latest releases](https://github.com/Captain-S0L0/negrendereragent/releases)
 2) Place the jar into your .minecraft folder
-3) Add `-javaagent:"negrendereragent-1.0.0"` to your Java arguments (change the jar version as appropriate)
+3) Add `-javaagent:"negrendereragent-1.0.0.jar"` to your Java arguments (change the jar version as appropriate)
 4) Enjoy!
 
 ## Features
